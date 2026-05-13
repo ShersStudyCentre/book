@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. WhatsApp Logic
     const orderBtn = document.getElementById('orderBtn');
     orderBtn.addEventListener('click', () => {
-        const phoneNumber = "0683901896"; //WhatsApp number
+        const phoneNumber = "27683901896"; //WhatsApp number
         const message = "Hello! I would like to order a copy of your book. Please provide the payment details.";
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
