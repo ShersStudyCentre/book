@@ -1,114 +1,215 @@
-/* style.css */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* 
+   Modern-Vintage Author Landing Page 
+   Fully Responsive & High-Conversion Styled
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cream-bg: #f4f1ea;
+    --text-dark: #2c3e50;
+    --accent-blue: #3498db;
+    --cta-orange: #e67e22;
+    --vintage-serif: 'Playfair Display', serif;
+    --modern-sans: 'Lato', sans-serif;
+}
 
 body {
-    background-color: #f4f1ea; /* Creamy vintage background */
+    background-color: var(--cream-bg);
+    /* Linen texture referenced from image_da7aa2.jpg */
     background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-    color: #2c3e50;
-    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    font-family: var(--modern-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
+    width: 95%;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 80px 20px;
-    position: relative;
-    z-index: 2;
+    padding: 5vh 20px;
 }
 
-/* Quote Header */
+/* --- HEADER / QUOTE SECTION --- */
 .top-quote {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: clamp(40px, 10vh, 80px);
 }
 
-.top-quote p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-style: italic;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.quote-mark {
-    font-size: 3rem;
-    color: #3498db;
-    font-family: 'Playfair Display', serif;
-}
-
-.top-quote cite {
-    display: block;
-    margin-top: 15px;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-/* Hero Layout */
-.hero-content {
+.quote-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.quote-mark {
+    font-family: var(--vintage-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--accent-blue);
+    line-height: 0;
+    display: inline-block;
+}
+
+.quote-text {
+    font-family: var(--vintage-serif);
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-style: italic;
+    margin: 0;
+    max-width: 800px;
+}
+
+cite {
+    display: block;
+    margin-top: 15px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Adjusts layout for mobile automatically */
+    gap: clamp(20px, 5vw, 60px);
+    margin-bottom: 80px;
+}
+
+.book-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 300px;
 }
 
 .book-mockup {
-    max-width: 400px;
     width: 100%;
+    max-width: 450px;
+    height: auto;
+    /* Soft shadow for depth as seen in image_da7aa2.jpg */
     filter: drop-shadow(20px 20px 40px rgba(0,0,0,0.15));
 }
 
-.text-container h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    line-height: 0.9;
+.text-container {
+    flex: 1;
+    min-width: 320px;
 }
 
-.highlight { color: #333; }
+.text-container h1 {
+    font-family: var(--vintage-serif);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 0.9;
+    margin-bottom: 20px;
+}
+
+.text-container h1 .highlight {
+    color: #333;
+    display: block;
+}
 
 .description {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     color: #7f8c8d;
-    max-width: 450px;
-    margin: 20px 0;
+    max-width: 500px;
+    margin-bottom: 30px;
 }
 
-/* Buttons matching the high-end look */
-.button-group { display: flex; gap: 20px; }
+/* --- BUTTONS --- */
+.button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 18px 35px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    border-radius: 2px; /* Vintage sharp edges */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
 
 .order-now {
-    background: #e67e22;
+    background-color: var(--cta-orange);
     color: white;
-    border: none;
-    padding: 18px 40px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.2s;
 }
 
 .study-centre {
-    background: #2c3e50;
+    background-color: var(--text-dark);
     color: white;
-    text-decoration: none;
-    padding: 18px 40px;
-    font-weight: bold;
-    font-size: 1rem;
 }
 
-/* Reviews Grid */
+/* --- REVIEWS SECTION --- */
+.reviews-section {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.reviews-section h2 {
+    font-family: var(--vintage-serif);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.vintage-hr {
+    width: 60px;
+    height: 3px;
+    background: var(--accent-blue);
+    margin: 0 auto 40px;
+    border: none;
+}
+
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 40px;
 }
 
 .review-card {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.4); /* Transparent paper effect */
     border: 1px solid rgba(0,0,0,0.05);
-    padding: 25px;
-    border-radius: 4px;
+    padding: 30px;
     text-align: left;
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .text-container {
+        text-align: center;
+    }
+    
+    .description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .button-group {
+        justify-content: center;
+    }
+
+    .quote-wrapper {
+        flex-direction: column; /* Stacks quotes on very small screens if needed */
+        gap: 5px;
+    }
 }

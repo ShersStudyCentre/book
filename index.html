@@ -14,12 +14,14 @@
 
     <div class="container">
         <!-- Top Quote Section from image_da7aa2.jpg -->
-        <header class="top-quote">
-            <span class="quote-mark">“</span>
-            <p>Every so often a book comes along that changes how we think... this is that book.</p>
-            <span class="quote-mark">”</span>
-            <cite>THE FINANCIAL TIMES</cite>
-        </header>
+       <header class="top-quote">
+    <div class="quote-wrapper">
+        <span class="quote-mark">“</span>
+        <p class="quote-text">Every so often a book comes along that changes how we think... this is that book.</p>
+        <span class="quote-mark">”</span>
+    </div>
+    <cite>THE FINANCIAL TIMES</cite>
+</header>
 
         <!-- Main Hero Section -->
         <section class="hero">
@@ -34,9 +36,12 @@
                     <p class="description">How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</p>
                     
                     <div class="button-group">
-                        <button id="orderBtn" class="order-now">Order Now</button>
-                        <a href="https://shersstudycentre.github.io/home/" class="study-centre">ShersStudyCentre</a>
-                    </div>
+    <!-- Use "btn order-now" to match the CSS -->
+    <button id="orderBtn" class="btn order-now">Order Now</button>
+    
+    <!-- Use "btn study-centre" and remove the default <a> underline -->
+    <a href="https://shersstudycentre.github.io/home/" class="btn study-centre">ShersStudyCentre</a>
+</div>
                 </div>
             </div>
         </section>
