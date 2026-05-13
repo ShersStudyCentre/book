@@ -75,40 +75,58 @@ cite {
 }
 
 /* --- HERO SECTION --- */
-.hero {
+.hero-content {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap; /* Adjusts layout for mobile automatically */
-    gap: clamp(20px, 5vw, 60px);
-    margin-bottom: 80px;
+    gap: 40px; /* Reduced gap slightly to allow for a bigger image */
+    width: 100%;
+    max-width: 1200px; /* Increased container width */
+    margin: 0 auto;
 }
 
 .book-container {
-    flex: 1;
+    flex: 0 0 50%; /* Increased from 40% to 50% */
     display: flex;
-    justify-content: center;
-    min-width: 300px;
+    justify-content: center; /* Center the larger image in its column */
 }
 
 .book-mockup {
     width: 100%;
-    max-width: 450px;
+    max-width: 600px; /* SIGNIFICANTLY increased from 400px/450px */
     height: auto;
-    /* Soft shadow for depth as seen in image_da7aa2.jpg */
-    filter: drop-shadow(20px 20px 40px rgba(0,0,0,0.15));
+    filter: drop-shadow(25px 25px 50px rgba(0,0,0,0.2)); /* Heavier shadow for a bigger book */
+    transition: transform 0.3s ease;
 }
 
+.book-mockup:hover {
+    transform: scale(1.02);
+}
 .text-container {
-    flex: 1;
-    min-width: 320px;
+    flex: 0 0 45%; /* Slightly reduced to give image more room */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+@media (max-width: 850px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .text-container {
+        align-items: center;
+        text-align: center;
+    }
+    .book-container {
+        justify-content: center;
+    }
 }
 
 .text-container h1 {
-    font-family: var(--vintage-serif);
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    line-height: 0.9;
-    margin-bottom: 20px;
+    font-size: clamp(3rem, 6vw, 5rem); 
+    line-height: 0.85;
 }
 
 .text-container h1 .highlight {
