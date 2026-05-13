@@ -1,0 +1,114 @@
+/* style.css */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: #f4f1ea; /* Creamy vintage background */
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    color: #2c3e50;
+    font-family: 'Lato', sans-serif;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Quote Header */
+.top-quote {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.top-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quote-mark {
+    font-size: 3rem;
+    color: #3498db;
+    font-family: 'Playfair Display', serif;
+}
+
+.top-quote cite {
+    display: block;
+    margin-top: 15px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Hero Layout */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.book-mockup {
+    max-width: 400px;
+    width: 100%;
+    filter: drop-shadow(20px 20px 40px rgba(0,0,0,0.15));
+}
+
+.text-container h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 0.9;
+}
+
+.highlight { color: #333; }
+
+.description {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 450px;
+    margin: 20px 0;
+}
+
+/* Buttons matching the high-end look */
+.button-group { display: flex; gap: 20px; }
+
+.order-now {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.study-centre {
+    background: #2c3e50;
+    color: white;
+    text-decoration: none;
+    padding: 18px 40px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Reviews Grid */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 25px;
+    border-radius: 4px;
+    text-align: left;
+}
