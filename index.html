@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book | Author Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for that Vintage feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="container">
+        <!-- Top Quote Section (Referencing image_da7aa2.jpg) -->
+        <header class="quote-header">
+            <span class="quote-icon">“</span>
+            <p class="main-quote">Every so often a book comes along that changes how we think... this is that book.</p>
+            <span class="quote-icon">”</span>
+            <cite>THE FINANCIAL TIMES</cite>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="book-display">
+                <!-- Replace with your actual 3D mockup image -->
+                <img src="book-mockup.png" alt="Book 3D Mockup" class="book-mockup">
+            </div>
+            
+            <div class="book-info">
+                <h1>THE LEAN <br><span>STARTUP</span></h1>
+                <p class="subtitle">How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</p>
+                
+                <div class="cta-group">
+                    <button id="orderBtn" class="btn btn-primary">Order Now</button>
+                    <a href="https://shersstudycentre.github.io/home/" class="btn btn-secondary">ShersStudyCentre</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Review Section -->
+        <section class="reviews">
+            <h2>Reader Reviews</h2>
+            <div id="reviews-grid" class="reviews-grid">
+                <!-- Data will be injected here via JS -->
+                <p class="loading">Loading reviews...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
