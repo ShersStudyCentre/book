@@ -2,12 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. WhatsApp Logic
     const orderBtn = document.getElementById('orderBtn');
+
+if (orderBtn) {
     orderBtn.addEventListener('click', () => {
-        const phoneNumber = "27683901896"; //WhatsApp number
-        const message = "Hello! I would like to order a copy of your book. Please provide the payment details.";
+        const phoneNumber = "27683901896"; 
+        const message = "Hellos! I would love to order a copy of your book. Please provide the payment details.";
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
     });
+}
 
     // 2. Fetch Google Sheets Data
     // Replace this URL with your "Published to Web" CSV link
