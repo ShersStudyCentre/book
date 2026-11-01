@@ -418,30 +418,38 @@
             }
         ];
 
-        // Parse CSV string into array of objects
-        function parseCSV(text) {
-            const lines = text.split('\n').filter(line => line.trim() !== '');
-            if (lines.length < 2) return [];
+// Parse CSV string into array of objects (Handles unquoted text, internal punctuation, and skips summary rows)
+function parseCSV(text) {
+    const lines = text.split(/\r?\n/).filter(line => line.trim() !== '');
+    if (lines.length < 2) return [];
 
-            const reviews = [];
+    const reviews = [];
 
-            for (let i = 1; i < lines.length; i++) {
-                // Regex to handle CSV quoted values properly
-                const row = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || lines[i].split(',');
-                if (row.length >= 3) {
-                    const cleanRow = row.map(cell => cell.replace(/^"|"$/g, '').trim());
-                    
-                    const name = cleanRow[0] || 'Anonymous';
-                    const stars = parseInt(cleanRow[1]) || 5;
-                    const review = cleanRow[2] || '';
+    for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
 
-                    if (review) {
-                        reviews.push({ name, stars, review });
-                    }
-                }
+        // Split line by comma while preserving quoted strings
+        const matches = line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || line.split(',');
+        
+        if (matches.length >= 2) {
+            const cleanRow = matches.map(cell => cell.replace(/^"|"$/g, '').trim());
+            
+            const name = cleanRow[0] || 'Anonymous';
+            const stars = parseInt(cleanRow[1]) || 5;
+
+            // Re-join remaining items from index 2 onwards in case message contains commas or periods
+            const review = cleanRow.slice(2).join(', ').trim();
+
+            // Ignore blank reviews and summary rows like "AVERAGE RATING"
+            const upperName = name.toUpperCase();
+            if (review && !upperName.includes('AVERAGE') && !upperName.includes('RATING')) {
+                reviews.push({ name, stars, review });
             }
-            return reviews;
         }
+    }
+    return reviews;
+}
 
         // Render Star Icons
         function renderStars(count) {
