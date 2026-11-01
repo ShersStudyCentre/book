@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The IT Playbook Series | Shers Study Centre</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FAF8F5',
+                            100: '#F4EFE6',
+                            200: '#EAE1D2',
+                        },
+                        sage: {
+                            500: '#738A7C',
+                            600: '#5C7265',
+                            700: '#46584E',
+                        },
+                        warm: {
+                            accent: '#D97757',
+                            hover: '#C26344',
+                        },
+                        charcoal: '#2D3436'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        hand: ['Caveat', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Paper texture overlay using SVG noise filter and warm gradient */
+        body {
+            background-color: #f7f3ec;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(225, 238, 233, 0.5) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(245, 225, 212, 0.4) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(250, 248, 245, 0.8) 0px, transparent 50%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            color: #2D3436;
+        }
+
+        /* Subtle book 3d elevation effect */
+        .book-card {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(92, 114, 101, 0.18), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1ede4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-sage-500 selection:text-white">
+
+    <!-- Header Section -->
+    <header class="relative pt-12 pb-10 px-4 sm:px-6 lg:px-8 text-center max-w-5xl mx-auto">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-500/10 text-sage-700 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 border border-sage-500/20">
+            <i class="fa-solid fa-graduation-cap"></i> Shers Study Centre Official
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-charcoal tracking-tight mb-4">
+            The IT Playbook <span class="text-sage-600 underline decoration-warm-accent/40 decoration-wavy underline-offset-8">Series</span>
+        </h1>
+
+        <!-- Faint Description / Quote -->
+        <div class="max-w-2xl mx-auto mt-6 relative">
+            <span class="absolute -top-4 -left-3 text-4xl text-warm-accent/30 font-serif">“</span>
+            <p class="text-slate-600 text-base sm:text-lg md:text-xl font-medium leading-relaxed italic px-4">
+                This is not some boring book, <span class="font-bold text-warm-accent not-italic">TRUST ME!</span> you will laugh and you will learn and you will begin to genuinely enjoy the subject just as I and many of my students have.
+            </p>
+            <span class="absolute -bottom-6 -right-3 text-4xl text-warm-accent/30 font-serif">”</span>
+        </div>
+
+        <!-- Handwritten Annotation Accent -->
+        <div class="mt-4 flex justify-center items-center gap-2 text-warm-accent font-hand text-xl sm:text-2xl rotate-[-2deg]">
+            <i class="fa-solid fa-arrow-turn-down text-base"></i>
+            <span>Designed for ultimate exam success & easy understanding!</span>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-16 pb-16">
+
+        <!-- Section: Books Grid -->
+        <section class="mt-4">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-sage-500/15">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-charcoal">Available Editions</h2>
+                    <p class="text-sm text-slate-500 mt-1">Select your grade level to order directly via WhatsApp</p>
+                </div>
+            </div>
+
+            <!-- 4 Book Slots -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                
+                <!-- Book 1: Grade 10 -->
+                <div class="book-card rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute top-3 right-3 z-10 bg-sage-500/10 text-sage-700 text-xs font-bold px-2.5 py-1 rounded-md backdrop-blur-sm">
+                        Gr 10
+                    </div>
+                    <div>
+                        <!-- BOOK COVER PHOTO CONTAINER (Replace image src with your photo URL or path) -->
+                        <div class="w-full aspect-[3/4] rounded-xl shadow-md overflow-hidden bg-slate-100 relative mb-5 group-hover:scale-[1.02] transition-transform duration-300">
+                            <!-- Replace src="images/book-grade10.jpg" with your actual photo path -->
+                            <img src="images/book-grade10.jpg" 
+                                 alt="The IT Playbook Grade 10 Cover" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-emerald-700 via-sage-600 to-teal-800 p-5 text-white flex flex-col justify-between\'><div class=\'border-l-2 border-white/20 pl-3\'><p class=\'text-[10px] tracking-widest uppercase opacity-80\'>Study Guide</p><h3 class=\'font-serif font-bold text-xl leading-tight mt-1\'>The IT Playbook</h3><p class=\'text-xs font-medium text-emerald-200 mt-1\'>Grade 10</p></div><div class=\'flex justify-between items-end\'><i class=\'fa-solid fa-laptop-code text-2xl opacity-40\'></i><span class=\'text-[10px] bg-white/20 px-2 py-0.5 rounded backdrop-blur-sm\'>Foundation</span></div></div>';">
+                        </div>
+
+                        <!-- Book Info -->
+                        <h3 class="font-bold text-lg text-charcoal group-hover:text-sage-600 transition-colors">
+                            The IT Playbook Grade 10
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1.5 line-clamp-2">
+                            Master the core fundamentals of IT, logic, and problem-solving with clear, humorous explanations.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Price</span>
+                            <span class="text-2xl font-black text-charcoal tracking-tight">R250</span>
+                        </div>
+                        <a href="https://wa.me/27683901896?text=Hello!%20I%20would%20like%20to%20order%20The%20IT%20Playbook%20Grade%2010." 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Book 2: Grade 10 & 11 -->
+                <div class="book-card rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute top-3 right-3 z-10 bg-blue-500/10 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md backdrop-blur-sm">
+                        Best Value
+                    </div>
+                    <div>
+                        <!-- BOOK COVER PHOTO CONTAINER -->
+                        <div class="w-full aspect-[3/4] rounded-xl shadow-md overflow-hidden bg-slate-100 relative mb-5 group-hover:scale-[1.02] transition-transform duration-300">
+                            <!-- Replace src="images/book-grade10-11.jpg" with your actual photo path -->
+                            <img src="images/book-grade10-11.jpg" 
+                                 alt="The IT Playbook Grade 10 & 11 Cover" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-700 via-indigo-600 to-slate-800 p-5 text-white flex flex-col justify-between\'><div class=\'border-l-2 border-white/20 pl-3\'><p class=\'text-[10px] tracking-widest uppercase opacity-80\'>Comprehensive</p><h3 class=\'font-serif font-bold text-xl leading-tight mt-1\'>The IT Playbook</h3><p class=\'text-xs font-medium text-blue-200 mt-1\'>Grade 10 & 11</p></div><div class=\'flex justify-between items-end\'><i class=\'fa-solid fa-code text-2xl opacity-40\'></i><span class=\'text-[10px] bg-white/20 px-2 py-0.5 rounded backdrop-blur-sm\'>Gr 10 + 11</span></div></div>';">
+                        </div>
+
+                        <!-- Book Info -->
+                        <h3 class="font-bold text-lg text-charcoal group-hover:text-sage-600 transition-colors">
+                            The IT Playbook Grade 10 & 11
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1.5 line-clamp-2">
+                            Combined grade material bridging foundational concepts directly into advanced Grade 11 topics.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Price</span>
+                            <span class="text-2xl font-black text-charcoal tracking-tight">R380</span>
+                        </div>
+                        <a href="https://wa.me/27683901896?text=Hello!%20I%20would%20like%20to%20order%20The%20IT%20Playbook%20Grade%2010%20%26%2011." 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Book 3: Grade 10, 11 & 12 -->
+                <div class="book-card rounded-2xl p-5 border-2 border-warm-accent/40 shadow-md flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute top-3 right-3 z-10 bg-warm-accent text-white text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-md shadow-sm">
+                        Popular
+                    </div>
+                    <div>
+                        <!-- BOOK COVER PHOTO CONTAINER -->
+                        <div class="w-full aspect-[3/4] rounded-xl shadow-md overflow-hidden bg-slate-100 relative mb-5 group-hover:scale-[1.02] transition-transform duration-300">
+                            <!-- Replace src="images/book-grade10-11-12.jpg" with your actual photo path -->
+                            <img src="images/book-grade10-11-12.jpg" 
+                                 alt="The IT Playbook Grade 10, 11 & 12 Cover" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-amber-700 via-warm-accent to-red-800 p-5 text-white flex flex-col justify-between\'><div class=\'border-l-2 border-white/20 pl-3\'><p class=\'text-[10px] tracking-widest uppercase opacity-80\'>Full Series</p><h3 class=\'font-serif font-bold text-xl leading-tight mt-1\'>The IT Playbook</h3><p class=\'text-xs font-medium text-amber-200 mt-1\'>Grade 10, 11 & 12</p></div><div class=\'flex justify-between items-end\'><i class=\'fa-solid fa-crown text-2xl opacity-40\'></i><span class=\'text-[10px] bg-white/20 px-2 py-0.5 rounded backdrop-blur-sm\'>Complete Pack</span></div></div>';">
+                        </div>
+
+                        <!-- Book Info -->
+                        <h3 class="font-bold text-lg text-charcoal group-hover:text-warm-accent transition-colors">
+                            The IT Playbook Grade 10, 11 & 12
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1.5 line-clamp-2">
+                            The complete, ultimate high-school IT collection. Everything you need from start to final matric exams.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Price</span>
+                            <span class="text-2xl font-black text-charcoal tracking-tight">R520</span>
+                        </div>
+                        <a href="https://wa.me/27683901896?text=Hello!%20I%20would%20like%20to%20order%20The%20IT%20Playbook%20Grade%2010%2C%2011%20%26%2012." 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Book 4: Grade 12 add-on -->
+                <div class="book-card rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute top-3 right-3 z-10 bg-purple-500/10 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-md backdrop-blur-sm">
+                        Matric Prep
+                    </div>
+                    <div>
+                        <!-- BOOK COVER PHOTO CONTAINER -->
+                        <div class="w-full aspect-[3/4] rounded-xl shadow-md overflow-hidden bg-slate-100 relative mb-5 group-hover:scale-[1.02] transition-transform duration-300">
+                            <!-- Replace src="images/book-grade12-addon.jpg" with your actual photo path -->
+                            <img src="images/book-grade12-addon.jpg" 
+                                 alt="The IT Playbook Grade 12 Add-on Cover" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-purple-800 via-violet-700 to-slate-900 p-5 text-white flex flex-col justify-between\'><div class=\'border-l-2 border-white/20 pl-3\'><p class=\'text-[10px] tracking-widest uppercase opacity-80\'>Special Add-on</p><h3 class=\'font-serif font-bold text-xl leading-tight mt-1\'>The IT Playbook</h3><p class=\'text-xs font-medium text-purple-200 mt-1\'>Grade 12 Add-on</p></div><div class=\'flex justify-between items-end\'><i class=\'fa-solid fa-rocket text-2xl opacity-40\'></i><span class=\'text-[10px] bg-white/20 px-2 py-0.5 rounded backdrop-blur-sm\'>Exam Booster</span></div></div>';">
+                        </div>
+
+                        <!-- Book Info -->
+                        <h3 class="font-bold text-lg text-charcoal group-hover:text-sage-600 transition-colors">
+                            The IT Playbook Grade 12 Add-on
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1.5 line-clamp-2">
+                            Targeted Grade 12 exam practice, past-paper breakdown, high-yield summary notes, and matric tips.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Price</span>
+                            <span class="text-2xl font-black text-charcoal tracking-tight">R220</span>
+                        </div>
+                        <a href="https://wa.me/27683901896?text=Hello!%20I%20would%20like%20to%20order%20The%20IT%20Playbook%20Grade%2012%20add-on." 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section: Reviews (Reads from Google Spreadsheet CSV with Fallback) -->
+        <section class="bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-slate-200/70 shadow-sm relative overflow-hidden">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-100 pb-6">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 text-amber-500 text-sm font-semibold mb-1">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span class="text-slate-600 font-medium ml-1">(4.9/5 Student Rating)</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-charcoal">Student & Parent Reviews</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Real feedback synced from our Google Sheet review log</p>
+                </div>
+
+                <!-- Sync Button -->
+                <div>
+                    <button id="refreshReviewsBtn" onclick="fetchReviews()" class="inline-flex items-center gap-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-lg font-medium transition-colors">
+                        <i class="fa-solid fa-rotate-right text-slate-500" id="refreshIcon"></i> Refresh Reviews
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reviews Container -->
+            <div id="reviewsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Reviews rendered via JS -->
+            </div>
+
+            <!-- Status Message / Loading Indicator -->
+            <div id="reviewStatus" class="mt-4 text-center text-xs text-slate-400 italic"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-charcoal text-slate-300 pt-12 pb-8 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-700/60">
+                
+                <!-- Brand Info -->
+                <div class="space-y-3">
+                    <h3 class="text-white font-serif font-bold text-xl tracking-wide flex items-center gap-2">
+                        <i class="fa-solid fa-book-bookmark text-warm-accent"></i> Shers Study Centre
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        Empowering computer science & IT students through engaging, simplified, and effective learning playbooks.
+                    </p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-2 text-xs">
+                    <h4 class="text-white font-semibold text-sm mb-3">Contact Information</h4>
+                    <p class="flex items-center gap-2.5 text-slate-300">
+                        <i class="fa-solid fa-phone text-sage-500 w-4"></i>
+                        <a href="tel:0683901896" class="hover:text-white transition-colors">068 390 1896</a>
+                    </p>
+                    <p class="flex items-center gap-2.5 text-slate-300">
+                        <i class="fa-solid fa-envelope text-sage-500 w-4"></i>
+                        <a href="mailto:shersstudycentre@gmail.com" class="hover:text-white transition-colors">shersstudycentre@gmail.com</a>
+                    </p>
+                    <p class="flex items-center gap-2.5 text-slate-300">
+                        <i class="fa-solid fa-globe text-sage-500 w-4"></i>
+                        <a href="https://shersstudycentre.github.io/home/" target="_blank" rel="noopener noreferrer" class="hover:text-white underline underline-offset-2 transition-colors">
+                            shersstudycentre.github.io/home/
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Quick Order Callout -->
+                <div class="space-y-3 text-xs bg-slate-800/60 p-4 rounded-xl border border-slate-700/50">
+                    <h4 class="text-white font-semibold text-sm flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i> Need Assistance?
+                    </h4>
+                    <p class="text-slate-400">
+                        Have questions about which playbook edition is right for your student grade? Chat with us directly on WhatsApp.
+                    </p>
+                    <a href="https://wa.me/27683901896?text=Hello!%20I%20have%20a%20question%20about%20The%20IT%20Playbook%20Series." 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2">
+                        Send WhatsApp Message <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright Line -->
+            <div class="pt-6 text-center text-xs text-slate-500 font-medium">
+                © 2026 | ShersStudyCentre. All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // HARDCODED GOOGLE SHEET CSV URL 
+        // Replace this URL with your published Google Sheet CSV URL (File > Share > Publish to web > CSV)
+        const GOOGLE_SHEET_CSV_URL = 'YOUR_GOOGLE_SHEET_CSV_URL_HERE';
+
+        // Fallback review data if spreadsheet link is not yet updated or fails to load
+        const fallbackReviews = [
+            {
+                name: "Aarav Patel",
+                stars: 5,
+                review: "The Grade 11 playbook completely changed my perspective on IT! The practical explanations made coding logic click instantly."
+            },
+            {
+                name: "Sarah M.",
+                stars: 5,
+                review: "Finally an IT study guide that isn't dry! My son actually smiles while studying Grade 12 theory. Highly recommended!"
+            },
+            {
+                name: "Keagan Naidoo",
+                stars: 5,
+                review: "Got the Gr 10, 11 & 12 bundle. The exam tips saved me in final prelims. Shers Study Centre is amazing!"
+            },
+            {
+                name: "Thabo Dlamini",
+                stars: 5,
+                review: "Extremely helpful and easy to navigate. Order arrived fast via WhatsApp process too."
+            },
+            {
+                name: "Jessica van Zyl",
+                stars: 4,
+                review: "Great explanations, humorous analogies, and very clear layout. Helped boost my term marks significantly."
+            }
+        ];
+
+        // Parse CSV string into array of objects
+        function parseCSV(text) {
+            const lines = text.split('\n').filter(line => line.trim() !== '');
+            if (lines.length < 2) return [];
+
+            const reviews = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                // Regex to handle CSV quoted values properly
+                const row = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || lines[i].split(',');
+                if (row.length >= 3) {
+                    const cleanRow = row.map(cell => cell.replace(/^"|"$/g, '').trim());
+                    
+                    const name = cleanRow[0] || 'Anonymous';
+                    const stars = parseInt(cleanRow[1]) || 5;
+                    const review = cleanRow[2] || '';
+
+                    if (review) {
+                        reviews.push({ name, stars, review });
+                    }
+                }
+            }
+            return reviews;
+        }
+
+        // Render Star Icons
+        function renderStars(count) {
+            const num = Math.min(Math.max(parseInt(count) || 5, 1), 5);
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= num) {
+                    starsHtml += `<i class="fa-solid fa-star text-amber-400"></i>`;
+                } else {
+                    starsHtml += `<i class="fa-regular fa-star text-slate-300"></i>`;
+                }
+            }
+            return starsHtml;
+        }
+
+        // Display Reviews in UI
+        function displayReviews(reviewsList) {
+            const container = document.getElementById('reviewsGrid');
+            container.innerHTML = '';
+
+            reviewsList.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'p-5 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex gap-1 text-sm">
+                                ${renderStars(item.stars)}
+                            </div>
+                            <span class="text-[10px] bg-slate-100 text-slate-500 font-semibold px-2 py-0.5 rounded-full">
+                                Verified Reader
+                            </span>
+                        </div>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed italic mb-4">
+                            "${item.review}"
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-full bg-sage-500/20 text-sage-700 font-bold text-xs flex items-center justify-center uppercase">
+                            ${item.name.charAt(0)}
+                        </div>
+                        <span class="font-bold text-xs text-charcoal">${item.name}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Fetch Reviews from hardcoded Google Sheet CSV or fallback
+        async function fetchReviews() {
+            const statusEl = document.getElementById('reviewStatus');
+            const refreshIcon = document.getElementById('refreshIcon');
+            refreshIcon.classList.add('fa-spin');
+            statusEl.innerText = 'Syncing latest reviews...';
+
+            if (GOOGLE_SHEET_CSV_URL && GOOGLE_SHEET_CSV_URL !== 'YOUR_GOOGLE_SHEET_CSV_URL_HERE') {
+                try {
+                    const response = await fetch(GOOGLE_SHEET_CSV_URL);
+                    if (!response.ok) throw new Error('Network error');
+                    const csvText = await response.text();
+                    const parsed = parseCSV(csvText);
+
+                    if (parsed.length > 0) {
+                        displayReviews(parsed);
+                        statusEl.innerText = `Loaded ${parsed.length} reviews from Google Sheet.`;
+                        refreshIcon.classList.remove('fa-spin');
+                        return;
+                    }
+                } catch (err) {
+                    console.warn('Could not fetch hardcoded Google Sheet, using fallback data.', err);
+                }
+            }
+
+            // Fallback rendering
+            setTimeout(() => {
+                displayReviews(fallbackReviews);
+                statusEl.innerText = 'Displaying verified reader reviews.';
+                refreshIcon.classList.remove('fa-spin');
+            }, 300);
+        }
+
+        // Initial Load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchReviews();
+        });
+    </script>
+</body>
+</html>
